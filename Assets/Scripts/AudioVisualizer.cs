@@ -12,6 +12,8 @@ public class AudioVisualizer : MonoBehaviour
     float midFreq;
     float highFreq;
 
+    public bool lowPitch = false;
+
     AudioSource music;
 
     public static AudioVisualizer instance;
@@ -29,9 +31,25 @@ public class AudioVisualizer : MonoBehaviour
         }
         spectrum = new float[256];
         music = GetComponent<AudioSource>();
+        InvokeRepeating("ChangePitch", 2.0f, 3.0f);
     }
 
-   void Update()
+    void ChangePitch()
+    {
+        music.pitch = 0.5f;
+        if (lowPitch == true)
+        {
+            music.pitch = 1.0f;
+            lowPitch = false;
+        }
+        else
+        {
+            music.pitch = 0.5f;
+            lowPitch = true;
+        }
+    }
+
+    void Update()
    {
         music.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
 
