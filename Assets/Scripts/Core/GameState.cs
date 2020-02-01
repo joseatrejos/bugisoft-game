@@ -11,7 +11,7 @@ public class GameState : MonoBehaviour
     public bool completedThirdPuzzle = false;
     public string scenename;
     public GameObject player;
-    Scene scene;
+    public Scene scene;
 
     public void SaveGameState()
     {
@@ -22,9 +22,7 @@ public class GameState : MonoBehaviour
     {
         GameStateData data = SaveSystem.LoadGameState();
 
-        scene = SceneManager.GetActiveScene();
-        scenename = scene.name;
-        SceneManager.LoadScene(scenename);
+        SceneManager.LoadScene(data.scenename);
 
         completedFirstPuzzle = data.completedFirstPuzzle;
         completedSecondPuzzle = data.completedSecondPuzzle;
@@ -55,7 +53,6 @@ public class GameState : MonoBehaviour
         position.y = data.position[1];
         position.z = data.position[2];
         player.transform.position = position;
-
     }
 }
 
