@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< fer
 <<<<<<< HEAD:Assets/Materials.meta
 guid: 169b8c7fac43d81468d8f507c39979b5
 =======
 guid: d6c1a0d20b43bc04c827afc7414070fa
 >>>>>>> miguel:Assets/Audio.meta
+=======
+guid: d6796d855d24ad84885895f6b4c44cf5
+>>>>>>> Gamemanager
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
