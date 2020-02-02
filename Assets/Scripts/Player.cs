@@ -24,10 +24,25 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>(); 
     }
 
 
+
+    void Start()
+    {
+        GameManager.instance.GameData = SaveSystem.LoadGameState();
+
+        GameManager.instance.Player = gameObject; 
+
+        GameManager.instance.PlayerPos = new Vector3(
+            GameManager.instance.GameData.position[0],
+            GameManager.instance.GameData.position[1],
+            GameManager.instance.GameData.position[2]
+        );
+
+        GameManager.instance.Player.transform.position = GameManager.instance.PlayerPos;
+    }
 
     public Vector3 Axis
     {
@@ -47,6 +62,7 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(Axis);
         }
     }
+
     void MoveTopDown3DConfuse(float speed)
     {
         transform.Translate(Vector3.back * AxisDelta.magnitude * speed);
