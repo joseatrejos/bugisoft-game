@@ -10,22 +10,33 @@ public class Menu : MonoBehaviour
     public bool completedSecondPuzzle = false;
     public bool completedThirdPuzzle = false;
     public string scenename;
+    private Animator salida;
 
+    void Start()
+    {
+        salida = GetComponent<Animator>();
+    }
     public void NewGame()
     {
-        Debug.Log("New game starts");
-        SceneManager.LoadScene("SampleScene");
+        StartCoroutine(Trans());
     }
+
+    IEnumerator Trans()
+    {
+        salida.SetTrigger("entrada");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Menuglitch");
+    }
+    
     public void LoadGame(){
         GameStateData data = SaveSystem.LoadGameState();
         SceneManager.LoadScene(data.scenename);
-
         completedFirstPuzzle = data.completedFirstPuzzle;
         completedSecondPuzzle = data.completedSecondPuzzle;
         completedThirdPuzzle = data.completedThirdPuzzle;
+        
     }
     public void Exit(){
-        Debug.Log("Close window");
         Application.Quit();
     }
 }
