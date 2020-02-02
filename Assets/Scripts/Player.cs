@@ -5,12 +5,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
+<<<<<<< Updated upstream
+=======
+    LayerMask layer;
+
+    [SerializeField]
+    Color rayColor = Color.magenta;
+    [SerializeField, Range(0.1f, 5f)]
+    float rayDistance = 2.5f;
+    
+    [SerializeField]
+>>>>>>> Stashed changes
     float moveSpeed;
 
     bool confuse = true;
 
     Rigidbody rb;
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     void Awake()
     {
         rb = GetComponent<Rigidbody>(); 
