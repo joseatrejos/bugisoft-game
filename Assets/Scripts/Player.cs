@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,12 +33,12 @@ public class Player : MonoBehaviour
 
     public Vector3 Axis
     {
-        get => new Vector3(Input.GetAxis("Horizontal"), 0f,Input.GetAxis("Vertical"));
+        get => new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
     }
 
     public Vector3 AxisDelta
     {
-        get => new Vector3(Input.GetAxis("Horizontal"), 0f,Input.GetAxis("Vertical")) * Time.deltaTime;
+        get => new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * Time.deltaTime;
     }
 
     void MoveTopDown3D(float speed)
@@ -61,26 +61,27 @@ public class Player : MonoBehaviour
   
     void Update()
     {
-       if(confuse)
+        if (confuse)
         {
             MoveTopDown3DConfuse(moveSpeed);
-        }else
+        }
+        else
         {
             MoveTopDown3D(moveSpeed);
         }
-        
+
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "desconfuse")
+        if (other.tag == "desconfuse")
         {
-            confuse=false;
+            confuse = false;
         }
 
-        if(other.tag == "confuse")
+        if (other.tag == "confuse")
         {
-            confuse=true;
+            confuse = true;
         }
 
     }
