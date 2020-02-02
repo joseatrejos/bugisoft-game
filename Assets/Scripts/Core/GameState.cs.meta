@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< fer:Assets/Prefabs.meta
+guid: dcc6b9548326c0f48bb2ba78dd2eb286
+folderAsset: yes
+DefaultImporter:
+=======
 guid: 0d1cbb268a23da8438e2775d1e9f2c54
 MonoImporter:
+>>>>>>> Sistema de guardado 1.0:Assets/Scripts/GameState.cs.meta
   externalObjects: {}
   serializedVersion: 2
   defaultReferences: []

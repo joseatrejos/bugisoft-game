@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -13,7 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField, Range(0.1f, 5f)] 
     float rayDistance = 2.5f;
     
-    [SerializeField] float moveSpeed;
+    [SerializeField]
+    float moveSpeed;
+    protected Animator anim;
 
     [SerializeField] int state=2;
 
@@ -22,7 +24,11 @@ public class Player : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>(); 
+        
+        anim = GetComponent<Animator>();
     }
+
+
 
     void Start()
     {
@@ -47,12 +53,12 @@ public class Player : MonoBehaviour
 
     public Vector3 Axis
     {
-        get => new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        get => new Vector3(Input.GetAxis("Horizontal"), 0f,Input.GetAxis("Vertical"));
     }
 
     public Vector3 AxisDelta
     {
-        get => new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * Time.deltaTime;
+        get => new Vector3(Input.GetAxis("Horizontal"), 0f,Input.GetAxis("Vertical")) * Time.deltaTime;
     }
 
     void MoveTopDown3D(float speed)
@@ -62,7 +68,9 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(Axis);
         }
+        anim.SetFloat("magnitude", Mathf.Abs(Axis.magnitude));
     }
+
     void MoveTopDown3DConfuse(float speed)
     {
         transform.Translate(Vector3.back * AxisDelta.magnitude * speed);
@@ -70,14 +78,16 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(Axis);
         }
+        anim.SetFloat("magnitude", Mathf.Abs(Axis.magnitude));
     }
-    void MoveTopDown3DConfusePart2(float speed)
+     void MoveTopDown3DConfusePart2(float speed)
     {
         transform.Translate(Vector3.left * AxisDelta.magnitude * speed);
         if (Axis != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(Axis);
         }
+        anim.SetFloat("magnitude", Mathf.Abs(Axis.magnitude));
     }
 
 
@@ -117,21 +127,20 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "desconfuse")
+        if(other.tag == "desconfuse")
         {
             state = 0;
         }
-        else
-        if (other.tag == "confuse")
+
+        else if(other.tag == "confuse")
         {
             state = 1;
         }
-        else
-        if (other.tag == "confusePart2")
+
+        else if(other.tag == "confusePart2")
         {
             state = 2;
         }
-
     }
 
 

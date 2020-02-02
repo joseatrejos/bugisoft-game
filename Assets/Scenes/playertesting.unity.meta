@@ -1,8 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< fer
+=======
 <<<<<<< HEAD:Assets/Audio.meta
 guid: ebdce0cda2fdf814fb63bcb1c5ff463f
 folderAsset: yes
 =======
+>>>>>>> Gamemanager
 guid: 05d27fb993df3074f8c447bcd7a7e0ba
 >>>>>>> origin/fer:Assets/Scenes/playertesting.unity.meta
 DefaultImporter:
