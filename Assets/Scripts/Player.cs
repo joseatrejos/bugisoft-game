@@ -21,8 +21,6 @@ public class Player : MonoBehaviour
 
     Rigidbody rb;
 
-    string stop = "noHit";
-
     void Awake()
     {
         rb = GetComponent<Rigidbody>(); 
@@ -64,6 +62,7 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(Axis);
         }
+        anim.SetFloat("magnitude", Mathf.Abs(Axis.magnitude));
     }
 
     void MoveTopDown3DConfuse(float speed)
@@ -73,6 +72,7 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(Axis);
         }
+        anim.SetFloat("magnitude", Mathf.Abs(Axis.magnitude));
     }
      void MoveTopDown3DConfusePart2(float speed)
     {
@@ -81,6 +81,7 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(Axis);
         }
+        anim.SetFloat("magnitude", Mathf.Abs(Axis.magnitude));
     }
 
   
