@@ -942,7 +942,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 458524893}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 936940542}
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &458524893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2069,12 +2080,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 936940540}
+  - component: {fileID: 936940542}
   - component: {fileID: 936940539}
   - component: {fileID: 936940538}
   - component: {fileID: 936940537}
   - component: {fileID: 936940541}
   - component: {fileID: 936940543}
-  - component: {fileID: 936940542}
   m_Layer: 5
   m_Name: Ending
   m_TagString: Untagged
@@ -2196,10 +2207,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 936940536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1257945d17cc01341a9ed68b9398cb25, type: 3}
+  m_Script: {fileID: 11500000, guid: 875a2d8a7c28e2243a641027639066e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impact: {fileID: 8300000, guid: 6bfa867428273cc4a967579f0a843443, type: 3}
+  speed: 10
+  completedFirstPuzzle: 0
+  completedSecondPuzzle: 0
+  completedThirdPuzzle: 0
+  scenename: 
 --- !u!82 &936940543
 AudioSource:
   m_ObjectHideFlags: 0
