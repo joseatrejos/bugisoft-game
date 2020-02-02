@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< fer
+<<<<<<< fer
 <<<<<<< HEAD:Assets/Materials.meta
 guid: 19464ed55d36cfe409b055df541b7541
 =======
@@ -8,6 +9,9 @@ guid: d6c1a0d20b43bc04c827afc7414070fa
 =======
 guid: 4358bda380bc54b41b39d27bf9323616
 >>>>>>> UI Main Menu and Options Menu
+=======
+guid: d6c1a0d20b43bc04c827afc7414070fa
+>>>>>>> Player Fix
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
