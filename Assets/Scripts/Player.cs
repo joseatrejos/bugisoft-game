@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     float moveSpeed;
 
-    bool confuse = true;
+    bool confuse = false;
 
     Rigidbody rb;
 
@@ -61,13 +61,11 @@ public class Player : MonoBehaviour
         if(other.tag == "desconfuse")
         {
             confuse=false;
-        }
-
+        }else
         if(other.tag == "confuse")
         {
             confuse=true;
         }
 
     }
-
 }
