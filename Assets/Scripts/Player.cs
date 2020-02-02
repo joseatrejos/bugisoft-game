@@ -5,16 +5,29 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
+    LayerMask layer;
+
+    [SerializeField]
+    Color rayColor = Color.magenta;
+    [SerializeField, Range(0.1f, 5f)]
+    float rayDistance = 5f;
+    
+    [SerializeField]
     float moveSpeed;
 
-    bool confuse = false;
+    [SerializeField]
+    int state=2;
 
     Rigidbody rb;
+
+    string stop = "noHit";
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
+
+
 
     public Vector3 Axis
     {
@@ -42,30 +55,95 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(Axis);
         }
     }
+     void MoveTopDown3DConfusePart2(float speed)
+    {
+        transform.Translate(Vector3.left * AxisDelta.magnitude * speed);
+        if (Axis != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(Axis);
+        }
+    }
 
   
     void Update()
     {
-       if(confuse)
-        {
-            MoveTopDown3DConfuse(moveSpeed);
-        }else
+         if(state==0)
         {
             MoveTopDown3D(moveSpeed);
+           if(WallHit)
+           {
+               moveSpeed=0;
+           }else
+           moveSpeed=10;
+        }else if(state==1)
+        {
+             MoveTopDown3DConfuse(moveSpeed);
+          if(WallHitConfused)
+          {
+              moveSpeed=0;
+          }else
+           moveSpeed=10;
+        }else if(state==2)
+        {
+            MoveTopDown3DConfusePart2(moveSpeed);
+            if(WallHitConfusedPart2)
+          {
+              moveSpeed=0;
+          }else
+           moveSpeed=10;
         }
-        
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "desconfuse")
         {
-            confuse=false;
+            state=0;
         }else
         if(other.tag == "confuse")
         {
-            confuse=true;
+            state=1;
+        }else
+        if(other.tag == "confusePart2")
+        {
+            state=2;
         }
 
     }
+
+ 
+    
+    protected bool WallHit
+    {
+        get=>Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), rayDistance, layer);
+    }
+
+    protected bool WallHitConfused
+    {
+        get=>Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), rayDistance, layer);
+    }
+    protected bool WallHitConfusedPart2
+    {
+        get=> Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), rayDistance, layer);
+    }
+
+    //Drawing raycast
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = rayColor;
+        
+        if(state==0)
+        {
+            Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayDistance);
+        }else
+        if(state==1)
+        {
+             Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * rayDistance);
+        }else
+        if(state==2)
+        {
+            Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * rayDistance);
+        }
+    }
+
 }

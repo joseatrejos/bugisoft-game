@@ -8,9 +8,9 @@ public class SceneChange : MonoBehaviour
    [SerializeField] string scene;
   public void ChangeScene()
   {
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(scene); 
   }
-
+  
    void OnTriggerEnter(Collider other)
     {
         ChangeScene();
