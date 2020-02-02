@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-<<<<<<< fer
-guid: bb22cb42ee81fc242812cada7e8dbad9
-=======
-guid: e46895905f410054fa80330b73c27c1b
->>>>>>> Animation Finished
+guid: d7bf490513bc90a4daac5a9c4479a3fe
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 2826240456034743336
+    second: Personaje@TPose
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -38,11 +37,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-<<<<<<< fer
     globalScale: 1
-=======
-    globalScale: 50
->>>>>>> Animation Finished
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -88,11 +83,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-<<<<<<< fer
     globalScale: 1
-=======
-    globalScale: 50
->>>>>>> Animation Finished
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -101,11 +92,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-<<<<<<< fer
   avatarSetup: 0
-=======
-  avatarSetup: 1
->>>>>>> Animation Finished
   additionalBone: 0
   userData: 
   assetBundleName: 
