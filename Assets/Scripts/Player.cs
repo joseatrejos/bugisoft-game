@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class Player : MonoBehaviour
 {
@@ -30,17 +32,23 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        GameManager.instance.GameData = SaveSystem.LoadGameState();
+        string path = Application.persistentDataPath + "/player.fun";
+        if (File.Exists(path))
+        {
+            GameManager.instance.GameData = SaveSystem.LoadGameState();
 
-        GameManager.instance.Player = gameObject; 
+            GameManager.instance.Player = gameObject; 
 
-        GameManager.instance.PlayerPos = new Vector3(
-            GameManager.instance.GameData.position[0],
-            GameManager.instance.GameData.position[1],
-            GameManager.instance.GameData.position[2]
-        );
+            GameManager.instance.PlayerPos = new Vector3(
+                GameManager.instance.GameData.position[0],
+                GameManager.instance.GameData.position[1],
+                GameManager.instance.GameData.position[2]
+            );
 
-        GameManager.instance.Player.transform.position = GameManager.instance.PlayerPos;
+            GameManager.instance.Player.transform.position = GameManager.instance.PlayerPos;
+        } else {
+            Debug.Log("Save file not found in" + path);
+        }
     }
 
     public Vector3 Axis
