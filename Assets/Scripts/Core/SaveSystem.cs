@@ -13,9 +13,10 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Create);
         GameStateData data = new GameStateData(gameState);
-
-        formatter.Serialize(stream, data);
+        string json = JsonUtility.ToJson(data);
+        formatter.Serialize(stream, json);
         stream.Close();
+        Debug.Log(path);
     }
 
     public static GameStateData LoadGameState()
@@ -25,7 +26,9 @@ public static class SaveSystem
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-            GameStateData data = formatter.Deserialize(stream) as GameStateData;
+            //GameStateData data = formatter.Deserialize(stream) as GameStateData;
+            string json = formatter.Deserialize(stream) as string;
+            GameStateData data = JsonUtility.FromJson<GameStateData>(json);
 
             stream.Close();
 

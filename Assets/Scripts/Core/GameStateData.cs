@@ -21,7 +21,7 @@ public class GameStateData
         position[1] = gameState.transform.position.y;
         position[2] = gameState.transform.position.z;
         scene = SceneManager.GetActiveScene();
-        scenename = gameState.scene.name;
+        scenename = SceneManager.GetActiveScene().name;
 
         completedFirstPuzzle = gameState.completedFirstPuzzle;
         completedSecondPuzzle = gameState.completedSecondPuzzle;

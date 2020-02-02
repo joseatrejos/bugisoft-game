@@ -6,7 +6,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public GameObject player;
+    GameObject player;
+
+    public GameObject Player {get => player; set => player = value; }
+
+    Vector3 playerPos;
+
+    public Vector3 PlayerPos{ get => playerPos; set => playerPos = value;}
+
+    GameStateData gameData;
+
+    public GameStateData GameData{ get => gameData; set => gameData = value; }
 
     void Awake()
     {
@@ -21,16 +31,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnLevelWasLoaded()
+    public void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        GameStateData data = SaveSystem.LoadGameState();
-
+        /*GameStateData data = SaveSystem.LoadGameState();
         Vector3 position;
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];
         player.transform.position = position;
+        */
     }
     
 }

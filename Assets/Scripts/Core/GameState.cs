@@ -11,7 +11,8 @@ public class GameState : MonoBehaviour
     public bool completedThirdPuzzle = false;
     public string scenename;
     public Scene scene;
-
+    
+    
     public void SaveGameState()
     {
         SaveSystem.SaveGameState(this);
@@ -27,11 +28,8 @@ public class GameState : MonoBehaviour
         completedSecondPuzzle = data.completedSecondPuzzle;
         completedThirdPuzzle = data.completedThirdPuzzle;
     }
-
     private void Update() 
     {
-        //Debug.Log("UPDATE");
-        // Placeholder
         if (Input.GetKeyDown(KeyCode.S))
         {
             Debug.Log("SAVING");
@@ -43,5 +41,6 @@ public class GameState : MonoBehaviour
             LoadGameState();
         }
     }
+
 }
 
