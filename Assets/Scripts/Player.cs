@@ -6,18 +6,22 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    LayerMask layer;
-
+    [SerializeField] LayerMask layer;
     [SerializeField] Color rayColor = Color.magenta;
-    [SerializeField, Range(0.1f, 5f)] 
-    float rayDistance = 2.5f;
-    
-    [SerializeField]
-    float moveSpeed;
+    [SerializeField, Range(0.1f, 5f)] float rayDistance = 2.5f;
+    [SerializeField] float moveSpeed;
+    [SerializeField] int state=2;
+
+    // Animation of the main player
     protected Animator anim;
 
-    [SerializeField] int state=2;
+    // Spawn point of the player
+    private Vector3 spawnPoint;
+
+    // Sound Effects
+    public AudioClip moveSound1;
+    public AudioClip moveSound2;
+    public AudioClip gameOverSound;
 
     Rigidbody rb;
 
@@ -27,8 +31,6 @@ public class Player : MonoBehaviour
         
         anim = GetComponent<Animator>();
     }
-
-
 
     void Start()
     {
@@ -51,16 +53,26 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets the movement axis when the horizontal and/or vertical axes inputs are used.
+    /// </summary>
     public Vector3 Axis
     {
         get => new Vector3(Input.GetAxis("Horizontal"), 0f,Input.GetAxis("Vertical"));
     }
 
+    /// <summary>
+    /// Gets the movement axis times delta time when the horizontal and/or vertical axes inputs are used.
+    /// </summary>
     public Vector3 AxisDelta
     {
         get => new Vector3(Input.GetAxis("Horizontal"), 0f,Input.GetAxis("Vertical")) * Time.deltaTime;
     }
 
+    /// <summary>
+    /// Moves (and rotates) the player in the direction of the axis.
+    /// </summary>
+    /// <param name="speed">The speed (float) at which the player moves</param>
     void MoveTopDown3D(float speed)
     {
         transform.Translate(Vector3.forward * AxisDelta.magnitude * speed);
@@ -71,6 +83,10 @@ public class Player : MonoBehaviour
         anim.SetFloat("magnitude", Mathf.Abs(Axis.magnitude));
     }
 
+    /// <summary>
+    /// Moves (and rotates) the player in the opposite direction of the axis.
+    /// </summary>
+    /// <param name="speed">The speed (float) at which the player moves</param>
     void MoveTopDown3DConfuse(float speed)
     {
         transform.Translate(Vector3.back * AxisDelta.magnitude * speed);
@@ -80,7 +96,12 @@ public class Player : MonoBehaviour
         }
         anim.SetFloat("magnitude", Mathf.Abs(Axis.magnitude));
     }
-     void MoveTopDown3DConfusePart2(float speed)
+
+    /// <summary>
+    /// Moves (and rotates) the player in random directions of the axis.
+    /// </summary>
+    /// <param name="speed">The speed (float) at which the player moves</param>
+    void MoveTopDown3DConfusePart2(float speed)
     {
         transform.Translate(Vector3.left * AxisDelta.magnitude * speed);
         if (Axis != Vector3.zero)
@@ -89,7 +110,6 @@ public class Player : MonoBehaviour
         }
         anim.SetFloat("magnitude", Mathf.Abs(Axis.magnitude));
     }
-
 
     void Update()
     {
@@ -143,13 +163,10 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
     protected bool WallHit
     {
         get => Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), rayDistance, layer);
     }
-
     protected bool WallHitConfused
     {
         get => Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), rayDistance, layer);
@@ -159,7 +176,9 @@ public class Player : MonoBehaviour
         get => Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), rayDistance, layer);
     }
 
-    //Drawing raycast
+    /// <summary>
+    /// Draws the players raycast.
+    /// </summary>
     void OnDrawGizmosSelected()
     {
         Gizmos.color = rayColor;
@@ -178,6 +197,23 @@ public class Player : MonoBehaviour
         {
             Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * rayDistance);
         }
+    }
+
+    /// <summary>
+    /// Returns the player to its starting position.
+    /// </summary>
+    void Respawn()
+    {
+        this.transform.position = spawnPoint;
+    }
+
+    /// <summary>
+    /// Fades the camera to the death screen and stops the music.
+    /// </summary>
+    void Death()
+    {
+        SoundManager.instance.PlaySingle(gameOverSound);
+        SoundManager.instance.musicSource.Stop();
     }
 
 }

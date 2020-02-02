@@ -247,6 +247,9 @@ MonoBehaviour:
   rayDistance: 1.45
   moveSpeed: 5
   state: 0
+  moveSound1: {fileID: 0}
+  moveSound2: {fileID: 0}
+  gameOverSound: {fileID: 0}
 --- !u!54 &243665691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -363,8 +366,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270882504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.01, y: -0.6, z: 7.963702}
-  m_LocalScale: {x: 6.9318, y: 6.8819604, z: 6.9318}
+  m_LocalPosition: {x: -4.01, y: -0.6, z: 22.99}
+  m_LocalScale: {x: 6.9318, y: 6.8819604, z: 9.892579}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -428,7 +431,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522567887}
-  m_LocalRotation: {x: 0.36165637, y: -0.0044308216, z: 0.0017184874, w: 0.93229944}
+  m_LocalRotation: {x: 0.36165634, y: -0.004430867, z: 0.0017185048, w: 0.93229944}
   m_LocalPosition: {x: -1.89, y: 4.2339997, z: -4.6600003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -952,7 +955,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017430900}
-  m_LocalRotation: {x: 0.36165637, y: -0.0044308216, z: 0.0017184874, w: 0.93229944}
+  m_LocalRotation: {x: 0.36165634, y: -0.004430867, z: 0.0017185048, w: 0.93229944}
   m_LocalPosition: {x: -1.89, y: 4.2339997, z: -4.6600003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1251,7 +1254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6df1f4e6220d5449eead1771a8c491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Level02
+  scene: Level04
 --- !u!135 &1837200279
 SphereCollider:
   m_ObjectHideFlags: 0
