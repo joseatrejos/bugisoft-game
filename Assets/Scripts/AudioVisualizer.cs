@@ -6,13 +6,11 @@ public class AudioVisualizer : MonoBehaviour
 {
 
     float[] spectrum;
-    public float frequency {get; set;}
+    public float frequencyValue {get; set;}
 
-    float lowFreq;
-    float midFreq;
-    float highFreq;
+    float pitch;
 
-    public bool lowPitch = false;
+    bool lowPitch = false;
 
     AudioSource music;
 
@@ -32,11 +30,11 @@ public class AudioVisualizer : MonoBehaviour
         spectrum = new float[256];
         music = GetComponent<AudioSource>();
         InvokeRepeating("ChangePitch", 2.0f, 3.0f);
+        InvokeRepeating("CheckPitch", 0.5f, 0.5f);
     }
 
     void ChangePitch()
     {
-        music.pitch = 0.5f;
         if (lowPitch == true)
         {
             music.pitch = 1.0f;
@@ -44,37 +42,23 @@ public class AudioVisualizer : MonoBehaviour
         }
         else
         {
-            music.pitch = 0.5f;
+            music.pitch = 0.4f;
             lowPitch = true;
         }
     }
 
     void Update()
    {
-        music.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
+    }
 
-        for (int i = 1; i < spectrum.Length - 1; i++)
-        {
-            frequency = spectrum[i];
+    void CheckPitch()
+    {
+        pitch = music.pitch;
+        Debug.Log(pitch);
+    }
 
-            lowFreq = frequency < 200f ? frequency : lowFreq;
-            midFreq = frequency > 200f || frequency <= 5000f ? frequency : midFreq;
-            highFreq = frequency > 5000f || frequency < 20000f ? frequency : highFreq;
-        }
-   }
-
-   public float LowFreq
+   public float GetPitch
    {
-       get => lowFreq;
-   }
-
-   public float MidFreq
-   {
-       get => midFreq;
-   }
-
-   public float HighFreq
-   {
-       get => highFreq;
+       get => pitch;
    }
 }
