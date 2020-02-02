@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    float moveSpeed;
+    [SerializeField] float moveSpeed;
+
+    // Sound Effects
+    public AudioClip moveSound1;
+    public AudioClip moveSound2;
+    public AudioClip gameOverSound;
+
 
     bool confuse = true;
 
     Rigidbody rb;
+
+    void Start()
+    {
+        
+    }
 
     void Awake()
     {
@@ -29,11 +39,15 @@ public class Player : MonoBehaviour
     void MoveTopDown3D(float speed)
     {
         transform.Translate(Vector3.forward * AxisDelta.magnitude * speed);
+
+        // Use of the SoundManager to play a random movement sound
+        SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
         if (Axis != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(Axis);
         }
     }
+
     void MoveTopDown3DConfuse(float speed)
     {
         transform.Translate(Vector3.back * AxisDelta.magnitude * speed);
@@ -43,7 +57,6 @@ public class Player : MonoBehaviour
         }
     }
 
-  
     void Update()
     {
        if(confuse)
@@ -53,7 +66,6 @@ public class Player : MonoBehaviour
         {
             MoveTopDown3D(moveSpeed);
         }
-        
     }
 
     void OnTriggerEnter(Collider other)
@@ -67,7 +79,10 @@ public class Player : MonoBehaviour
         {
             confuse=true;
         }
-
     }
+    /* Once you die
+        SoundManager.instance.PlaySingle(gameOverSound);
+        SoundManager.instance.musicSource.Stop();
+    */
 
 }
