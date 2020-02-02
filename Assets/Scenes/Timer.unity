@@ -623,6 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingTime: 10
   countdownTxt: {fileID: 1696168256}
+  active: 0
 --- !u!1 &1696168255
 GameObject:
   m_ObjectHideFlags: 0
