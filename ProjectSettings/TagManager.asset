@@ -6,9 +6,8 @@ TagManager:
   tags:
   - desconfuse
   - confuse
-  - changeScene
-  - player
   - confusePart2
+  - changeScene
   layers:
   - Default
   - TransparentFX
