@@ -37,6 +37,7 @@ public class Menu : MonoBehaviour
         
     }
     public void Exit(){
+        Debug.Log("Cierra pantalla");
         Application.Quit();
     }
 }
