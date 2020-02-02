@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Countdown : MonoBehaviour
 {
     float currentTime = 0f;
     [SerializeField] float startingTime = 10;
 
-    [SerializeField] TextElement countdownTxt;
+    [SerializeField] Text countdownTxt;
 
     private void Start() {
         currentTime = startingTime;
@@ -16,7 +16,9 @@ public class Countdown : MonoBehaviour
 
     private void Update() {
         currentTime -= 1 * Time.deltaTime;
-        countdownTxt.text = currentTime.ToString();
+
+        string currentTimeStr = currentTime.ToString("00.00");
+        countdownTxt.text = currentTimeStr;
     }
 
 }
