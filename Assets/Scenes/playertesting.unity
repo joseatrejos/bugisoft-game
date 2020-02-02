@@ -910,10 +910,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 949564595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8679bb039acaf35498433530aa1dca2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c1834194836e0344863648e9e8b3865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
 --- !u!54 &949564601
 Rigidbody:
   m_ObjectHideFlags: 0
