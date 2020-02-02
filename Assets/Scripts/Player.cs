@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     
     [SerializeField]
     float moveSpeed;
-    protected Animator anim;
 
     [SerializeField]
     int state=2;
@@ -26,8 +25,6 @@ public class Player : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>(); 
-        
-        anim = GetComponent<Animator>();
     }
 
 

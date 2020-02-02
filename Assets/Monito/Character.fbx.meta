@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< fer
 guid: bb22cb42ee81fc242812cada7e8dbad9
-=======
-guid: e46895905f410054fa80330b73c27c1b
->>>>>>> Animation Finished
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -38,11 +34,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-<<<<<<< fer
     globalScale: 1
-=======
-    globalScale: 50
->>>>>>> Animation Finished
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -88,11 +80,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-<<<<<<< fer
     globalScale: 1
-=======
-    globalScale: 50
->>>>>>> Animation Finished
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -101,11 +89,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-<<<<<<< fer
   avatarSetup: 0
-=======
-  avatarSetup: 1
->>>>>>> Animation Finished
   additionalBone: 0
   userData: 
   assetBundleName: 
