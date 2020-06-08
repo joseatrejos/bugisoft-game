@@ -13,7 +13,7 @@ public class Menunoplay : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
     public void heheh(){
-        SceneManager.LoadScene("Level01");
+        SceneManager.LoadScene("Level1");
     }
     public void aresureaudio(){
         audioSource.PlayOneShot(impact, 0.7F);
